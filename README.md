@@ -12,6 +12,8 @@
 
 This repository contains all code, assets, and experimental data for the paper above. The study investigates whether structuring a website to be *agent-friendly* — through semantic HTML, structured JSON data, and machine-readable navigation — measurably improves the performance of AI web agents on real shopping tasks.
 
+Full quantitative results are available in **[RESULTS.md](RESULTS.md)**.
+
 We built two versions of the same e-commerce website:
 
 - **AI Friendly** — designed with agent readability in mind (semantic markup, `robots.txt`, `sitemap.xml`, structured product data)
