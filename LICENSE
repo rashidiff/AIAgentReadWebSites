@@ -1,0 +1,57 @@
+Creative Commons Attribution 4.0 International License (CC BY 4.0)
+with Mandatory Academic Citation Requirement
+
+Copyright (c) 2025 Said Elnaffar and Farzad
+
+This work — including all code, datasets, website assets, experiment logs,
+and evaluation results contained in this repository — is licensed under the
+Creative Commons Attribution 4.0 International License (CC BY 4.0),
+subject to the additional mandatory citation requirement described below.
+
+========================================================================
+MANDATORY CITATION REQUIREMENT
+========================================================================
+
+Any use of this repository or any part of its contents — including but not
+limited to research, academic publication, reproduction, distribution,
+adaptation, or incorporation into other works — requires explicit citation
+of the following paper:
+
+  Said Elnaffar and Farzad. "Designing Agent-Ready Websites for AI Web
+  Agents: A Framework for Machine Readability, Actionability, and Decision
+  Reliability." 2025.
+
+BibTeX:
+
+  @article{elnaffar2025agentready,
+    title     = {Designing Agent-Ready Websites for AI Web Agents: A Framework
+                 for Machine Readability, Actionability, and Decision Reliability},
+    author    = {Elnaffar, Said and Farzad},
+    year      = {2025}
+  }
+
+This citation requirement applies to all forms of use, including but not
+limited to academic papers, theses, technical reports, blog posts, software
+projects, and commercial applications.
+
+========================================================================
+CC BY 4.0 SUMMARY
+========================================================================
+
+You are free to:
+  - Share  — copy and redistribute the material in any medium or format
+  - Adapt  — remix, transform, and build upon the material for any purpose,
+             even commercially
+
+Under the following terms:
+  - Attribution — You must give appropriate credit, provide a link to the
+                  license, and indicate if changes were made. You may do so
+                  in any reasonable manner, but not in any way that suggests
+                  the licensor endorses you or your use.
+  - Citation    — You must additionally cite the paper listed above in any
+                  academic or research output.
+
+No additional restrictions — You may not apply legal terms or technological
+measures that legally restrict others from doing anything the license permits.
+
+Full license text: https://creativecommons.org/licenses/by/4.0/legalcode
