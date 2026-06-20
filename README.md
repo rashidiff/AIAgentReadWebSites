@@ -1,6 +1,11 @@
 # Agent-Ready Websites — Experiment Setup Guide
 
-This repository contains two websites (AI Friendly and Classic site), experiment runner scripts, task definitions, and evaluation logs for benchmarking web-browsing AI agents across multiple LLMs.
+This repository contains the code, datasets, and experiment logs accompanying the paper:
+
+> **Designing Agent-Ready Websites for AI Web Agents: A Framework for Machine Readability, Actionability, and Decision Reliability**
+> Accepted at **ICEME 2026**
+
+The repository includes two websites (AI Friendly and Classic site), experiment runner scripts, task definitions, and evaluation logs for benchmarking web-browsing AI agents across multiple LLMs.
 
 ---
 
@@ -137,22 +142,6 @@ A live terminal log is also written to `terminal_logs/terminal_<timestamp>.log` 
 - **Port 3000 must be free.** On Windows the scripts automatically kill any process holding that port before each run.
 - **Do not close the browser window** manually during a run — the script manages it.
 - All models run with `temperature=0` and `top_p=1` for reproducibility.
-
----
-
-## Citation
-
-If you use this repository, dataset, or experimental framework in your research, you must cite the following paper:
-
-```bibtex
-@article{elnaffar2025agentready,
-  title     = {Designing Agent-Ready Websites for AI Web Agents: A Framework for Machine Readability, Actionability, and Decision Reliability},
-  author    = {Elnaffar, Said and Farzad},
-  year      = {2025}
-}
-```
-
-See [LICENSE](LICENSE) for full terms.
 
 ---
 
