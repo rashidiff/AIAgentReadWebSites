@@ -1,0 +1,12 @@
+| Run number | Final answer summary | Expected answer match | Functional result | Process issue | Step count | Main failure reason, if any | Brief justification |
+| ---------: | --- | --- | --- | --- | --: | --- | --- |
+| 1 | FocusBeat X; €149; correct category, stock, rating, battery, ANC, use case | Yes | PASS | Recovered mistake | 5 | - | The agent initially clicked the `<select>` incorrectly, but immediately corrected it with `select_dropdown`. The final result fully matches the correct answer. |
+| 2 | FocusBeat X; all 8 required fields correct | Yes | PASS | None | 5 | - | Direct path: Products -> Headphones -> sort high-to-low -> FocusBeat X details. Page timeout did not affect the result. |
+| 3 | FocusBeat X; all fields correct, with one extra introductory sentence | Yes | PASS | None | 6 | - | There were several JSON warnings, but under the evaluation rule they are not counted as process issues because the result is correct. The final information is complete and correct. |
+| 4 | JSON-style answer for FocusBeat X with all fields correct | Yes | PASS | None | 7 | - | The path included plan/write_file and extract, but the correct product was opened and all fields were reported correctly. |
+| 5 | JSON-style answer for FocusBeat X with all fields correct | Yes | PASS | None | 4 | - | Shortest successful run; it directly performed category/sort/details and gave a complete answer. |
+| 6 | FocusBeat X; all 8 required fields correct | Yes | PASS | None | 5 | - | The path was correct. It had one extra `evaluate`, but that did not cause an error or deviation. |
+| 7 | FocusBeat X; all 8 required fields correct | Yes | PASS | Recovered mistake | 7 | - | One unsuitable action on the select plus several warnings/timeouts occurred, but the agent corrected the path and the final answer was correct. |
+| 8 | FocusBeat X; all fields correct, with one extra introductory sentence | Yes | PASS | None | 7 | - | The result is complete and correct. Minor extra wording does not functionally violate the main requirement. |
+| 9 | FocusBeat X; all 8 required fields correct in one concise sentence | Yes | PASS | None | 6 | - | There was one empty-action warning, but it recovered and the final answer was complete and correct. |
+| 10 | JSON-style answer for FocusBeat X with all fields correct | Yes | PASS | None | 7 | - | A 429/API warning appears in the log, but the final result is fully correct and is not counted as a runtime failure under the rule. |

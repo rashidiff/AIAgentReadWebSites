@@ -1,0 +1,12 @@
+| Run number | Final answer summary | Expected answer match | Functional result | Process issue | Step count | Main failure reason, if any | Brief justification |
+| ---------: | --- | --- | --- | --- | --: | --- | --- |
+| 1 | FocusBeat X, €149, Headphones for remote meetings and focus, Low stock, 4.7/5, 45h, Active ANC, Open offices | Yes | PASS | None | 4 | None | The agent extracted the headphones list, compared prices, opened FocusBeat X, and reported all required fields correctly. |
+| 2 | FocusBeat X with all 8 fields correct | Yes | PASS | None | 4 | None | After scrolling, the agent saw the four headphones and selected FocusBeat X as the most expensive. The internal judge marked FAIL, but the output and main path are correct. |
+| 3 | FocusBeat X with all 8 fields correct | Yes | PASS | None | 3 | None | The agent quickly went to headphones and opened FocusBeat X. The path was less explicit, but the product and final information are fully correct. |
+| 4 | FocusBeat X with all 8 fields correct | Yes | PASS | None | 4 | None | After entering headphones, the agent scrolled, saw all products, selected FocusBeat X, and reported the correct details. |
+| 5 | FocusBeat X with all 8 fields correct | Yes | PASS | None | 4 | None | The agent confirmed all headphones after scrolling and extracted the correct product details. |
+| 6 | FocusBeat X with all 8 fields correct | Yes | PASS | None | 4 | None | The agent saw the four headphones with prices, identified FocusBeat X as the most expensive, and gave a complete final answer. |
+| 7 | FocusBeat X with all 8 fields correct | Yes | PASS | None | 7 | None | There were two JSON/parser warnings, but under the evaluation rule they are not counted as process issues because they did not affect the final result. The agent later sorted by price high-to-low, scrolled, and produced the correct output. |
+| 8 | FocusBeat X with all 8 fields correct | Yes | PASS | None | 3 | None | The agent reached FocusBeat X from featured products. Verification was weaker than in other runs, but the final answer exactly matches the correct task answer. |
+| 9 | FocusBeat X with all 8 fields correct | Yes | PASS | None | 3 | None | The agent entered headphones, identified FocusBeat X as the most expensive among the four visible products, opened details, and gave a complete output. |
+| 10 | FocusBeat X with all 8 fields correct | Yes | PASS | None | 5 | None | The agent sorted by price high-to-low, scrolled to confirm there was no more expensive product, then opened details and gave a complete final answer. |

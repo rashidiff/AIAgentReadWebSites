@@ -1,0 +1,12 @@
+| Run number | Final answer summary | Expected answer match | Functional result | Process issue | Step count | Main failure reason, if any | Brief justification |
+| ---------: | --- | --- | --- | --- | --: | --- | --- |
+| 1 | FocusBeat X, €149, correct category/stock/rating/battery/ANC/use case | Yes | PASS | None | 3 | None | The agent went to the headphones category, selected FocusBeat X as the most expensive option, opened its detail page, and returned all correct fields. The 429 warnings did not cause any failure. |
+| 2 | FocusBeat X, €149, all required fields correct | Yes | PASS | None | 3 | None | The path was correct; page timeout and 429 issues were recovered from. The final answer exactly matched the correct answer. |
+| 3 | FocusBeat X, €149, all required fields correct | Yes | PASS | None | 3 | None | No meaningful error occurred; the headphones category was opened, the correct product was selected, the detail page was opened, and no cart action was performed. |
+| 4 | FocusBeat X, €149, all required fields correct | Yes | PASS | None | 3 | None | Selection and extraction were correct. The internal judge marked this as failed, but the final answer and execution path were consistent with the task. |
+| 5 | FocusBeat X, €149, all required fields correct | Yes | PASS | None | 3 | None | Despite page timeout and 429 warnings, the agent reached the correct result and the final answer was complete. |
+| 6 | FocusBeat X, €149, all required fields correct | Yes | PASS | None | 3 | None | The execution path was short and correct; the correct product was opened and no add-to-cart action was observed. |
+| 7 | FocusBeat X, €149, all required fields correct | Yes | PASS | None | 3 | None | All requested information was extracted correctly; the 429 events were only warnings/retries. |
+| 8 | FocusBeat X, €149, all required fields correct | Yes | PASS | None | 3 | None | The agent viewed the headphones, identified FocusBeat X as the most expensive option, opened its detail page, and produced the correct output. |
+| 9 | FocusBeat X, €149, all required fields correct | Yes | PASS | None | 3 | None | The final answer was complete and matched the expected answer; there was no important behavioral error such as a wrong click or loop. |
+| 10 | FocusBeat X, €149, all required fields correct | Yes | PASS | None | 3 | None | The initial page timeout and 429 warnings did not affect the final result; the task ended with the correct product and fields. |
