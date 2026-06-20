@@ -42,13 +42,11 @@ source .venv/bin/activate
 
 ## 2. Install Dependencies
 
-The scripts were built and tested against **`browser-use==0.12.7`**. Install exactly this version to match the API used in the scripts (`Agent`, `Browser`, `ChatOpenAI`):
-
 ```bash
-pip install browser-use==0.12.7 python-dotenv loguru
+pip install -r requirements.txt
 ```
 
-Then install the Chromium browser that Playwright (bundled inside browser-use) controls:
+Then install the Chromium browser binary that Playwright uses (this is a one-time download, not a pip package):
 
 ```bash
 playwright install chromium
