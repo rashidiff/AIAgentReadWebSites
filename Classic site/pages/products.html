@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoTech Store | Products</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <style>
+        .filters {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        select, input {
+            padding: 0.5rem;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+        }
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .modal-content {
+            background-color: var(--card-bg);
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            width: 80%;
+            max-width: 800px;
+            position: relative;
+        }
+        .close {
+            position: absolute;
+            right: 1.5rem;
+            top: 1rem;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="../index.html" class="logo">EcoTech Store</a>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="reviews.html">Reviews</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+                <div class="cart-icon">
+                    <a href="cart.html">
+                        🛒 <span id="cart-count" class="cart-count">0</span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="padding: 2rem 0;">
+        <h1>Our Products</h1>
+        
+        <section class="filters">
+            <div class="filter-group">
+                <label for="search">Search</label>
+                <input type="text" id="search" placeholder="Search products...">
+            </div>
+            <div class="filter-group" style="justify-content: flex-end;">
+                <label for="search-btn">Run search</label>
+                <button id="search-btn" class="btn" type="button" data-action="search-products" aria-label="Search products">Search products</button>
+            </div>
+            <div class="filter-group">
+                <label for="category">Category</label>
+                <select id="category">
+                    <option value="all">All Categories</option>
+                    <option value="Noise-Cancelling Headphones">Headphones</option>
+                    <option value="Portable Monitors">Monitors</option>
+                    <option value="Ergonomic Keyboards">Keyboards</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="sort">Sort By</label>
+                <select id="sort">
+                    <option value="name">Name</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="rating">Rating</option>
+                </select>
+            </div>
+        </section>
+
+        <div id="product-grid" class="product-grid">
+            <!-- Products will be rendered here via script.js -->
+        </div>
+    </main>
+
+    <!-- Product Detail Modal -->
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modal-body">
+                <!-- Product details will be injected here -->
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h4>EcoTech Store</h4>
+                    <p>Providing the best productivity gear for the modern worker.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="products.html">All Products</a></li>
+                        <li><a href="faq.html">Shipping & Returns</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contact Us</h4>
+                    <p>Email: support@ecotech.example</p>
+                    <p>Phone: +1 234 567 890</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
+                <p>&copy; 2026 EcoTech Store. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/script.js"></script>
+    <script>
+        function renderProducts(filteredProducts) {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = '';
+            
+            filteredProducts.forEach(product => {
+                const isPurchasable = String(product.stock || '').trim().toLowerCase() !== 'out of stock';
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <div class="product-img">📦</div>
+                    <div class="product-info">
+                        <h3>${product.name}</h3>
+                        <p class="light-text">${product.category}</p>
+                        <p><strong>€${product.price}</strong> | ⭐ ${product.rating}</p>
+                        <p style="margin: 0.5rem 0;">${product.stock}</p>
+                        <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+                            <button class="btn" style="padding: 0.5rem; font-size: 0.8rem; flex: 1;" onclick="viewDetails(${product.id})" data-action="view-details" data-product-id="${product.id}" aria-label="Open product details for ${product.name}">Open product details for ${product.name}</button>
+                            <button class="btn" style="padding: 0.5rem; font-size: 0.8rem; background-color: var(--accent-color); flex: 1;" onclick="addToCart(${product.id})" data-action="add-to-cart" data-product-id="${product.id}" ${isPurchasable ? '' : 'disabled aria-disabled="true"'} aria-label="${isPurchasable ? `Add one ${product.name} to cart` : `Add one ${product.name} to cart unavailable because product is out of stock`}">Add one ${product.name} to cart</button>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function filterAndSort(options = {}) {
+            const { globalSearch = false } = options;
+            const searchTerm = document.getElementById('search').value.toLowerCase();
+            const category = document.getElementById('category').value;
+            const sortVal = document.getElementById('sort').value;
+            const effectiveCategory = globalSearch ? 'all' : category;
+
+            let filtered = products.filter(p => {
+                const matchesSearch = p.name.toLowerCase().includes(searchTerm) || 
+                                    p.description.toLowerCase().includes(searchTerm) ||
+                                    p.category.toLowerCase().includes(searchTerm) ||
+                                    p.bestFor.toLowerCase().includes(searchTerm);
+                const matchesCategory = effectiveCategory === 'all' || p.category === effectiveCategory;
+                return matchesSearch && matchesCategory;
+            });
+
+            if (sortVal === 'price-low') filtered.sort((a, b) => a.price - b.price);
+            else if (sortVal === 'price-high') filtered.sort((a, b) => b.price - a.price);
+            else if (sortVal === 'rating') filtered.sort((a, b) => b.rating - a.rating);
+            else if (sortVal === 'name') filtered.sort((a, b) => a.name.localeCompare(b.name));
+
+            renderProducts(filtered);
+        }
+
+        function runGlobalSearch() {
+            document.getElementById('category').value = 'all';
+            filterAndSort({ globalSearch: true });
+        }
+
+        function viewDetails(id) {
+            const product = products.find(p => p.id === id);
+            const isPurchasable = String(product?.stock || '').trim().toLowerCase() !== 'out of stock';
+            const modal = document.getElementById('product-modal');
+            const body = document.getElementById('modal-body');
+            
+            body.innerHTML = `
+                <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 250px; background: #eee; display: flex; align-items: center; justify-content: center; font-size: 5rem; border-radius: 8px;">📦</div>
+                    <div style="flex: 1.5; min-width: 300px;">
+                        <h2>${product.name}</h2>
+                        <p class="light-text">${product.category}</p>
+                        <h3 style="color: var(--secondary-color); margin: 1rem 0;">€${product.price}</h3>
+                        <p><strong>Rating:</strong> ⭐ ${product.rating} (${product.reviews} reviews)</p>
+                        <p><strong>Stock:</strong> ${product.stock}</p>
+                        <p style="margin: 1rem 0;">${product.description}</p>
+                        <ul>
+                            ${product.batteryLife ? `<li><strong>Battery Life:</strong> ${product.batteryLife}</li>` : ''}
+                            ${product.noiseCancelling ? `<li><strong>Noise Cancelling:</strong> ${product.noiseCancelling}</li>` : ''}
+                            ${product.size ? `<li><strong>Size:</strong> ${product.size}</li>` : ''}
+                            ${product.resolution ? `<li><strong>Resolution:</strong> ${product.resolution}</li>` : ''}
+                            ${product.connectivity ? `<li><strong>Connectivity:</strong> ${product.connectivity}</li>` : ''}
+                            <li><strong>Best For:</strong> ${product.bestFor}</li>
+                        </ul>
+                        <button class="btn" style="margin-top: 2rem; width: 100%;" onclick="addToCart(${product.id})" ${isPurchasable ? '' : 'disabled aria-disabled="true"'} aria-label="${isPurchasable ? `Add one ${product.name} to cart` : `Add one ${product.name} to cart unavailable because product is out of stock`}">Add to Cart</button>
+                    </div>
+                </div>
+            `;
+            modal.style.display = 'block';
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts(products);
+            document.getElementById('search').addEventListener('input', filterAndSort);
+            document.getElementById('category').addEventListener('change', filterAndSort);
+            document.getElementById('sort').addEventListener('change', filterAndSort);
+            document.getElementById('search-btn').addEventListener('click', runGlobalSearch);
+            document.getElementById('search').addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    runGlobalSearch();
+                }
+            });
+            
+            const modal = document.getElementById('product-modal');
+            document.querySelector('.close').onclick = () => modal.style.display = 'none';
+            window.onclick = (event) => { if (event.target == modal) modal.style.display = 'none'; }
+            
+            // Handle category filter from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const catParam = urlParams.get('category');
+            const searchParam = urlParams.get('q');
+            if (catParam) {
+                document.getElementById('category').value = catParam;
+                filterAndSort();
+            }
+            if (searchParam) {
+                document.getElementById('search').value = searchParam;
+                runGlobalSearch();
+            }
+        });
+    </script>
+</body>
+</html>

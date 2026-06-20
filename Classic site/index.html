@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoTech Store | Home</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">EcoTech Store</a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="pages/products.html">Products</a></li>
+                    <li><a href="pages/reviews.html">Reviews</a></li>
+                    <li><a href="pages/faq.html">FAQ</a></li>
+                </ul>
+                <div class="cart-icon">
+                    <a href="pages/cart.html">
+                        🛒 <span id="cart-count" class="cart-count">0</span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Eco-Friendly Tech for Better Productivity</h1>
+                <p>Curated accessories for remote work, study, and creative professionals.</p>
+                <div style="display: flex; gap: 0.75rem; justify-content: center; margin: 1.25rem 0; flex-wrap: wrap;">
+                    <input
+                        type="text"
+                        id="home-search"
+                        placeholder="Search products..."
+                        aria-label="Search products"
+                        style="padding: 0.75rem 1rem; min-width: 240px; border: 1px solid #d7d7d7; border-radius: 6px;"
+                    >
+                    <button
+                        type="button"
+                        class="btn"
+                        data-action="search-products"
+                        aria-label="Search products"
+                        onclick="window.location.href='pages/products.html?q=' + encodeURIComponent(document.getElementById('home-search').value)"
+                    >Search products</button>
+                </div>
+                <br>
+                <a href="pages/products.html" class="btn">Shop Products</a>
+            </div>
+        </section>
+
+        <section class="container" style="padding: 4rem 0;">
+            <h2 style="text-align: center; margin-bottom: 2rem;">Shop by Category</h2>
+            <div class="product-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                <div class="category-card" style="text-align: center; padding: 2rem; background: var(--card-bg); border-radius: var(--border-radius); box-shadow: var(--shadow);">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">🎧</div>
+                    <h3>Headphones</h3>
+                    <p style="margin: 1rem 0;">Noise-cancelling gear for focus.</p>
+                    <a href="pages/products.html?category=Noise-Cancelling+Headphones" class="btn" data-action="browse-category" data-category="Noise-Cancelling Headphones" aria-label="Browse category: Noise-Cancelling Headphones">Browse category: Noise-Cancelling Headphones</a>
+                </div>
+                <div class="category-card" style="text-align: center; padding: 2rem; background: var(--card-bg); border-radius: var(--border-radius); box-shadow: var(--shadow);">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">🖥️</div>
+                    <h3>Monitors</h3>
+                    <p style="margin: 1rem 0;">Portable screens for more space.</p>
+                    <a href="pages/products.html?category=Portable+Monitors" class="btn" data-action="browse-category" data-category="Portable Monitors" aria-label="Browse category: Portable Monitors">Browse category: Portable Monitors</a>
+                </div>
+                <div class="category-card" style="text-align: center; padding: 2rem; background: var(--card-bg); border-radius: var(--border-radius); box-shadow: var(--shadow);">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">⌨️</div>
+                    <h3>Keyboards</h3>
+                    <p style="margin: 1rem 0;">Ergonomic typing solutions.</p>
+                    <a href="pages/products.html?category=Ergonomic+Keyboards" class="btn" data-action="browse-category" data-category="Ergonomic Keyboards" aria-label="Browse category: Ergonomic Keyboards">Browse category: Ergonomic Keyboards</a>
+                </div>
+            </div>
+        </section>
+
+        <section style="background-color: #f1f1f1; padding: 4rem 0;">
+            <div class="container">
+                <h2 style="text-align: center; margin-bottom: 2rem;">Featured Products</h2>
+                <div id="featured-products" class="product-grid">
+                    <!-- Featured products will be rendered here -->
+                </div>
+            </div>
+        </section>
+
+        <section class="container" style="padding: 4rem 0;">
+            <h2 style="text-align: center; margin-bottom: 2rem;">Latest Deals</h2>
+            <div id="deals-grid" class="product-grid">
+                <!-- Deals will be rendered here -->
+            </div>
+        </section>
+
+        <section style="background-color: var(--primary-color); color: white; padding: 4rem 0;">
+            <div class="container">
+                <h2 style="text-align: center; margin-bottom: 3rem;">What Our Customers Say</h2>
+                <div class="product-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                    <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 8px;">
+                        <p style="font-style: italic; margin-bottom: 1rem;">"The QuietMax Pro headphones changed my work-from-home life. Pure silence!"</p>
+                        <p><strong>- Sarah J., Remote Worker</strong></p>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 8px;">
+                        <p style="font-style: italic; margin-bottom: 1rem;">"The ViewGo 14 monitor is so light, I take it to coffee shops every day."</p>
+                        <p><strong>- Mark T., Digital Nomad</strong></p>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 8px;">
+                        <p style="font-style: italic; margin-bottom: 1rem;">"Finally, a keyboard that doesn't hurt my wrists after 8 hours of coding."</p>
+                        <p><strong>- Alex D., Software Engineer</strong></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container" style="padding: 4rem 0;">
+            <h2 style="text-align: center; margin-bottom: 2rem;">Why Choose EcoTech?</h2>
+            <div class="product-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                <div style="text-align: center; padding: 1rem;">
+                    <h3>High Performance</h3>
+                    <p>Top-tier tech specs to ensure you stay productive all day long.</p>
+                </div>
+                <div style="text-align: center; padding: 1rem;">
+                    <h3>Ergonomic Design</h3>
+                    <p>Products designed with your comfort and health in mind.</p>
+                </div>
+                <div style="text-align: center; padding: 1rem;">
+                    <h3>Eco-Conscious</h3>
+                    <p>We prioritize sustainable materials and energy-efficient designs.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h4>EcoTech Store</h4>
+                    <p>Providing the best productivity gear for the modern worker.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="pages/products.html">All Products</a></li>
+                        <li><a href="pages/faq.html">Shipping & Returns</a></li>
+                        <li><a href="pages/faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contact Us</h4>
+                    <p>Email: support@ecotech.example</p>
+                    <p>Phone: +1 234 567 890</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
+                <p>&copy; 2026 EcoTech Store. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const homeSearch = document.getElementById('home-search');
+            if (!homeSearch) return;
+            homeSearch.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    const query = encodeURIComponent(homeSearch.value || '');
+                    window.location.href = `pages/products.html?q=${query}`;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
