@@ -1,0 +1,38 @@
+{
+  "task": "Task3",
+  "run": 10,
+  "status": "success",
+  "model": "x-ai/grok-4-fast",
+  "settings": {
+    "temperature": 0,
+    "top_p": 1,
+    "max_agent_steps": 30,
+    "max_failures": 3,
+    "browser_size": {
+      "width": 1280,
+      "height": 900
+    }
+  },
+  "usage": {
+    "total_prompt_tokens": 72127,
+    "total_prompt_cost": 0.0,
+    "total_prompt_cached_tokens": 18517,
+    "total_prompt_cached_cost": 0.0,
+    "total_completion_tokens": 8938,
+    "total_completion_cost": 0.0,
+    "total_tokens": 81065,
+    "total_cost": 0.0,
+    "entry_count": 8,
+    "by_model": {
+      "x-ai/grok-4-fast": {
+        "model": "x-ai/grok-4-fast",
+        "prompt_tokens": 72127,
+        "completion_tokens": 8938,
+        "total_tokens": 81065,
+        "cost": 0.0,
+        "invocations": 8,
+        "average_tokens_per_invocation": 10133.125
+      }
+    }
+  }
+}

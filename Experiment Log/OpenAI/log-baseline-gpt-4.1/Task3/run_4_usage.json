@@ -1,0 +1,38 @@
+{
+  "task": "Task3",
+  "run": 4,
+  "status": "success",
+  "model": "gpt-4.1",
+  "settings": {
+    "temperature": 0,
+    "top_p": 1,
+    "max_agent_steps": 30,
+    "max_failures": 3,
+    "browser_size": {
+      "width": 1280,
+      "height": 900
+    }
+  },
+  "usage": {
+    "total_prompt_tokens": 85398,
+    "total_prompt_cost": 0.067884,
+    "total_prompt_cached_tokens": 68608,
+    "total_prompt_cached_cost": 0.034303999999999994,
+    "total_completion_tokens": 3063,
+    "total_completion_cost": 0.024503999999999998,
+    "total_tokens": 88461,
+    "total_cost": 0.126692,
+    "entry_count": 12,
+    "by_model": {
+      "gpt-4.1": {
+        "model": "gpt-4.1",
+        "prompt_tokens": 85398,
+        "completion_tokens": 3063,
+        "total_tokens": 88461,
+        "cost": 0.092388,
+        "invocations": 12,
+        "average_tokens_per_invocation": 7371.75
+      }
+    }
+  }
+}

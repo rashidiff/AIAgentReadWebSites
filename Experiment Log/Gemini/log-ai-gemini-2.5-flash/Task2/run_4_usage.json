@@ -1,0 +1,43 @@
+{
+  "task": "Task2",
+  "run": 4,
+  "status": "success",
+  "model": "gemini-2.5-flash",
+  "settings": {
+    "temperature": 0,
+    "top_p": 1,
+    "base_url": "https://openrouter.ai/api/v1",
+    "default_headers": {
+      "HTTP-Referer": "http://localhost:3000",
+      "X-Title": "Agent-ready website experiment"
+    },
+    "max_agent_steps": 30,
+    "max_failures": 3,
+    "browser_size": {
+      "width": 1280,
+      "height": 900
+    }
+  },
+  "usage": {
+    "total_prompt_tokens": 55925,
+    "total_prompt_cost": 0.012690779999999997,
+    "total_prompt_cached_tokens": 15136,
+    "total_prompt_cached_cost": 0.00045408,
+    "total_completion_tokens": 2908,
+    "total_completion_cost": 0.0072699999999999996,
+    "total_tokens": 58833,
+    "total_cost": 0.020414859999999996,
+    "entry_count": 9,
+    "by_model": {
+      "gemini-2.5-flash": {
+        "model": "gemini-2.5-flash",
+        "prompt_tokens": 55925,
+        "completion_tokens": 2908,
+        "total_tokens": 58833,
+        "cost": 0.019960779999999997,
+        "invocations": 9,
+        "average_tokens_per_invocation": 6537.0
+      }
+    }
+  }
+}
