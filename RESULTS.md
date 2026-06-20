@@ -1,12 +1,8 @@
-# Experimental Results
-
-Full quantitative results from the paper:
-**Designing Agent-Ready Websites for AI Web Agents: A Framework for Machine Readability, Actionability, and Decision Reliability**
-*Accepted at ICEME 2026*
+# Results
 
 ---
 
-## Table A2 — Model-level task outcomes across website variants
+## Table 1 — Model-level task outcomes across website variants
 
 | Model | Website | PASS | PARTIAL | FAIL | Strict success | Functional success |
 |---|---|:---:|:---:|:---:|:---:|:---:|
@@ -21,9 +17,9 @@ Full quantitative results from the paper:
 
 ---
 
-## Table A3 — Task-level PASS-rate comparison
+## Table 2 — Task-level PASS-rate comparison
 
-| Task | Task type | Baseline PASS rate | Agent-ready PASS rate | Difference |
+| Task | Task type | Baseline | Agent-ready | Difference |
 |---|---|:---:|:---:|:---:|
 | Task 1 | Inventory-aware cart execution | 73.3% | 96.7% | **+23.4 pp** |
 | Task 2 | Product-detail extraction | 23.3% | 100% | **+76.7 pp** |
@@ -33,35 +29,35 @@ Full quantitative results from the paper:
 
 ---
 
-## Table A4 — Full task-level outcomes and diagnostic details
+## Table 3 — Full task-level outcomes and diagnostic details
 
 | Task | Website | PASS | PARTIAL | FAIL | PASS rate | Dominant issue when not PASS |
 |---|---|:---:|:---:|:---:|:---:|---|
 | Task 1 | Agent-ready | 29 | 0 | 1 | 96.7% | One runtime/output-format failure; otherwise cart execution was stable. |
-| Task 1 | Baseline | 22 | 0 | 8 | 73.3% | Wrong availability assessment or wrong requested item selection in GPT-4.1 runs; some cart-state errors. |
-| Task 2 | Agent-ready | 30 | 0 | 0 | 100% | No functional failure across the three models. |
-| Task 2 | Baseline | 7 | 21 | 2 | 23.3% | Target item was often found, but required task fields were incomplete or missing. |
-| Task 3 | Agent-ready | 28 | 2 | 0 | 93.3% | Minor missing evidence or limitation reporting; final comparison usually remained correct. |
-| Task 3 | Baseline | 5 | 12 | 13 | 16.7% | Missing required item attributes, wrong or uncertain verdicts, and incomplete comparison evidence. |
-| Task 4 | Agent-ready | 23 | 0 | 7 | 76.7% | Wrong requested item selection, incorrect required-value extraction, max-step/evaluation failure, or constraint-selection error. |
-| Task 4 | Baseline | 18 | 2 | 10 | 60.0% | Missed required qualifying fields, wrong valid item selection, loop/stagnation, or max-step exhaustion. |
-| Task 5 | Agent-ready | 24 | 1 | 5 | 80.0% | Required policy information was usually found, but the final verdict was sometimes wrong or overstated. |
-| Task 5 | Baseline | 22 | 8 | 0 | 73.3% | Required policy pages were usually found, but interpretation of requested conditions was often incomplete. |
+| Task 1 | Baseline | 22 | 0 | 8 | 73.3% | Wrong availability assessment or wrong item selection in GPT-4.1 runs; some cart-state errors. |
+| Task 2 | Agent-ready | 30 | 0 | 0 | 100% | No failures across the three models. |
+| Task 2 | Baseline | 7 | 21 | 2 | 23.3% | Target item was often found but required fields were incomplete or missing. |
+| Task 3 | Agent-ready | 28 | 2 | 0 | 93.3% | Minor missing evidence or limitation reporting; final comparison usually correct. |
+| Task 3 | Baseline | 5 | 12 | 13 | 16.7% | Missing item attributes, wrong verdicts, and incomplete comparison evidence. |
+| Task 4 | Agent-ready | 23 | 0 | 7 | 76.7% | Wrong item selection, incorrect value extraction, max-step failure, or constraint error. |
+| Task 4 | Baseline | 18 | 2 | 10 | 60.0% | Missed qualifying fields, wrong item selection, loop/stagnation, or max-step exhaustion. |
+| Task 5 | Agent-ready | 24 | 1 | 5 | 80.0% | Policy information was usually found but the final verdict was sometimes wrong. |
+| Task 5 | Baseline | 22 | 8 | 0 | 73.3% | Policy pages were usually found but interpretation of conditions was often incomplete. |
 
 ---
 
-## Table A5 — Average step count by model and website variant
+## Table 4 — Average step count by model
 
-| Model | Agent-ready avg. steps | Baseline avg. steps | Difference | Reduction |
+| Model | Agent-ready | Baseline | Difference | Reduction |
 |---|:---:|:---:|:---:|:---:|
 | GPT-4.1 | 3.70 | 5.96 | 2.26 | 37.9% |
 | Gemini 2.5 Flash | 11.56 | 15.02 | 3.46 | 23.0% |
 | Grok-4 Fast | 4.20 | 6.96 | 2.76 | 39.7% |
-| **Overall mean** | **6.49** | **9.31** | **2.82** | **30.4%** |
+| **Overall** | **6.49** | **9.31** | **2.82** | **30.4%** |
 
 ---
 
-## Table A6 — Average step count by task
+## Table 5 — Average step count by task
 
 | Task | Task type | Agent-ready | Baseline | Difference | Reduction |
 |---|---|:---:|:---:|:---:|:---:|
@@ -73,7 +69,7 @@ Full quantitative results from the paper:
 
 ---
 
-## Table A7 — Total prompt-token usage by model
+## Table 6 — Total prompt-token usage by model
 
 | Model | Agent-ready | Baseline | Reduction |
 |---|:---:|:---:|:---:|
