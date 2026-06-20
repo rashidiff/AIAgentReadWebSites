@@ -1,0 +1,28 @@
+{
+  "@id": "http://localhost:3000/pages/products.html#dualdesk-15",
+  "id": 6,
+  "slug": "dualdesk-15",
+  "name": "DualDesk 15",
+  "category": "Portable Monitors",
+  "price": 229,
+  "priceCurrency": "EUR",
+  "availability": "https://schema.org/InStock",
+  "stock": "In stock",
+  "rating": 4.5,
+  "reviewCount": 138,
+  "description": "A second-screen solution for remote workers who need more workspace.",
+  "bestFor": "Remote workers",
+  "size": "15.6 inch",
+  "resolution": "Full HD",
+  "lastUpdated": "2026-05-01",
+  "stockCheckedDate": "2026-05-07",
+  "priceValidUntil": "2026-06-30",
+  "useCases": [
+    "Remote workers"
+  ],
+  "displayCategory": "Portable monitors for mobile productivity",
+  "internalCategoryKey": "Portable Monitors",
+  "dataAvailability": "available",
+  "dataPurchasable": true,
+  "dataStockStatus": "in_stock"
+}

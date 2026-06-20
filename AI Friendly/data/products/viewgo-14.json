@@ -1,0 +1,28 @@
+{
+  "@id": "http://localhost:3000/pages/products.html#viewgo-14",
+  "id": 5,
+  "slug": "viewgo-14",
+  "name": "ViewGo 14",
+  "category": "Portable Monitors",
+  "price": 179,
+  "priceCurrency": "EUR",
+  "availability": "https://schema.org/InStock",
+  "stock": "In stock",
+  "rating": 4.4,
+  "reviewCount": 121,
+  "description": "Portable monitor for studying, presentations, and light productivity.",
+  "bestFor": "Students",
+  "size": "14 inch",
+  "resolution": "Full HD",
+  "lastUpdated": "2026-05-01",
+  "stockCheckedDate": "2026-05-07",
+  "priceValidUntil": "2026-06-30",
+  "useCases": [
+    "Students"
+  ],
+  "displayCategory": "Portable monitors for mobile productivity",
+  "internalCategoryKey": "Portable Monitors",
+  "dataAvailability": "available",
+  "dataPurchasable": true,
+  "dataStockStatus": "in_stock"
+}

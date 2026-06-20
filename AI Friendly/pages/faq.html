@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoTech Store | FAQ</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <style>
+        .faq-item {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 1.5rem;
+        }
+        .faq-item h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="../index.html" class="logo">EcoTech Store</a>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="reviews.html">Reviews</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+                <div class="cart-icon">
+                    <a href="cart.html">
+                        🛒 <span id="cart-count" class="cart-count">0</span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="padding: 2rem 0;">
+        <h1>Frequently Asked Questions</h1>
+        <br>
+
+        <div class="faq-item">
+            <h3>Do you ship internationally?</h3>
+            <p>Yes. We ship to 40+ countries. International delivery takes 7–14 business days. Duties and taxes are the buyer's responsibility.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Is my payment information secure?</h3>
+            <p>Yes. We use Stripe for payment processing. We never store your card details on our servers.</p>
+        </div>
+
+        <section id="shipping-returns-policy" class="faq-item" aria-label="Shipping and return policy" tabindex="-1">
+            <h2>Shipping & Returns Policy</h2>
+            <p><strong>Domestic standard shipping:</strong> 3–5 business days</p>
+            <p><strong>Domestic express shipping:</strong> 1–2 business days</p>
+            <p><strong>Return window:</strong> 30 days</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h4>EcoTech Store</h4>
+                    <p>Providing the best productivity gear for the modern worker.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="products.html">All Products</a></li>
+                        <li><a href="faq.html#shipping-returns-policy" aria-label="View shipping and return policy" data-action="view-policy" data-policy="shipping-returns">Shipping & Returns</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contact Us</h4>
+                    <p>Email: support@ecotech.example</p>
+                    <p>Phone: +1 234 567 890</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
+                <p>&copy; 2026 EcoTech Store. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const policyId = 'shipping-returns-policy';
+            const policySection = document.getElementById(policyId);
+
+            function focusPolicySection() {
+                if (!policySection) return;
+                policySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                policySection.focus({ preventScroll: true });
+            }
+
+            if (window.location.hash === `#${policyId}`) {
+                focusPolicySection();
+            }
+
+            document.querySelectorAll(`a[href="faq.html#${policyId}"], a[href="#${policyId}"]`).forEach((link) => {
+                link.addEventListener('click', () => {
+                    setTimeout(() => {
+                        if (window.location.hash === `#${policyId}`) {
+                            focusPolicySection();
+                        }
+                    }, 0);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

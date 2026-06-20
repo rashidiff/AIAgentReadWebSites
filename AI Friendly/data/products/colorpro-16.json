@@ -1,0 +1,28 @@
+{
+  "@id": "http://localhost:3000/pages/products.html#colorpro-16",
+  "id": 7,
+  "slug": "colorpro-16",
+  "name": "ColorPro 16",
+  "category": "Portable Monitors",
+  "price": 319,
+  "priceCurrency": "EUR",
+  "availability": "https://schema.org/LimitedAvailability",
+  "stock": "Low stock",
+  "rating": 4.8,
+  "reviewCount": 87,
+  "description": "High-resolution portable monitor for creative work and color-sensitive tasks.",
+  "bestFor": "Designers",
+  "size": "16 inch",
+  "resolution": "2.5K",
+  "lastUpdated": "2026-05-01",
+  "stockCheckedDate": "2026-05-07",
+  "priceValidUntil": "2026-06-30",
+  "useCases": [
+    "Designers"
+  ],
+  "displayCategory": "Portable monitors for mobile productivity",
+  "internalCategoryKey": "Portable Monitors",
+  "dataAvailability": "available",
+  "dataPurchasable": true,
+  "dataStockStatus": "low_stock"
+}

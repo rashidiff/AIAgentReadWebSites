@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoTech Store | Products</title>
+    <meta name="description" content="Browse EcoTech products with categories, pricing, stock status, and ratings for productivity-focused gear.">
+    <meta name="last-updated" content="2026-05-01">
+    <link rel="canonical" href="http://localhost:3000/pages/products.html">
+    <link rel="sitemap" type="application/xml" href="http://localhost:3000/sitemap.xml">
+    <link rel="alternate" type="application/json" href="http://localhost:3000/data/products.json">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <style>
+        .filters {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        select, input {
+            padding: 0.5rem;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+        }
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .modal-content {
+            background-color: var(--card-bg);
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            width: 80%;
+            max-width: 800px;
+            position: relative;
+        }
+        .close {
+            position: absolute;
+            right: 1.5rem;
+            top: 1rem;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="../index.html" class="logo">EcoTech Store</a>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="reviews.html">Reviews</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+                <div class="cart-icon">
+                    <a href="cart.html">
+                        🛒 <span id="cart-count" class="cart-count">0</span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="padding: 2rem 0;">
+        <h1>Our Products</h1>
+        <p id="category-notice" aria-live="polite"></p>
+        <div id="action-status" role="status" aria-live="polite" aria-atomic="true"></div>
+        
+        <section class="filters">
+            <div class="filter-group">
+                <label for="search">Search</label>
+                <input type="text" id="search" placeholder="Search products..." data-action="search-input" aria-label="Search products by name, category, description, or use case">
+            </div>
+            <div class="filter-group" style="justify-content: flex-end;">
+                <label for="search-btn">Run search</label>
+                <button id="search-btn" class="btn" type="button" data-action="search-products" aria-label="Search products">Search products</button>
+            </div>
+            <div class="filter-group">
+                <label for="category">Category</label>
+                <select id="category" aria-label="Filter products by category">
+                    <option value="all">All Categories</option>
+                    <option value="headphones">Headphones</option>
+                    <option value="monitors">Portable monitors</option>
+                    <option value="keyboards">Keyboards</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="sort">Sort By</label>
+                <select id="sort">
+                    <option value="name">Name</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="rating">Rating</option>
+                </select>
+            </div>
+        </section>
+
+        <div id="product-grid" class="product-grid">
+            <!-- Products will be rendered here via script.js -->
+        </div>
+    </main>
+
+    <!-- Product Detail Modal -->
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modal-body">
+                <!-- Product details will be injected here -->
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h4>EcoTech Store</h4>
+                    <p>Providing the best productivity gear for the modern worker.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="products.html">All Products</a></li>
+                        <li><a href="faq.html#shipping-returns-policy" aria-label="View shipping and return policy" data-action="view-policy" data-policy="shipping-returns">Shipping & Returns</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contact Us</h4>
+                    <p>Email: support@ecotech.example</p>
+                    <p>Phone: +1 234 567 890</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
+                <p>&copy; 2026 EcoTech Store. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/script.js"></script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ItemList",
+      "@id": "http://localhost:3000/pages/products.html#product-list",
+      "name": "EcoTech Product Catalog",
+      "itemListOrder": "https://schema.org/ItemListOrderAscending",
+      "numberOfItems": 12,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "url": "http://localhost:3000/pages/products.html#quietmax-pro",
+          "item": {
+            "@id": "http://localhost:3000/pages/products.html#quietmax-pro"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "url": "http://localhost:3000/pages/products.html#soundlite-air",
+          "item": {
+            "@id": "http://localhost:3000/pages/products.html#soundlite-air"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "url": "http://localhost:3000/pages/products.html#focusbeat-x",
+          "item": {
+            "@id": "http://localhost:3000/pages/products.html#focusbeat-x"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "url": "http://localhost:3000/pages/products.html#travelsound-mini",
+          "item": {
+            "@id": "http://localhost:3000/pages/products.html#travelsound-mini"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "url": "http://localhost:3000/pages/products.html#viewgo-14",
+          "item": {
+            "@id": "http://localhost:3000/pages/products.html#viewgo-14"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "url": "http://localhost:3000/pages/products.html#dualdesk-15",
+          "item": {
+            "@id": "http://localhost:3000/pages/products.html#dualdesk-15"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 7,
+          "url": "http://localhost:3000/pages/products.html#colorpro-16",
+          "item": {
+            "@id": "http://localhost:3000/pages/products.html#colorpro-16"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 8,
+          "url": "http://localhost:3000/pages/products.html#litescreen-13",
+          "item": {
+            "@id": "http://localhost:3000/pages/products.html#litescreen-13"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 9,
+          "url": "http://localhost:3000/pages/products.html#ergotype-flex",
+          "item": {
+            "@id": "http://localhost:3000/pages/products.html#ergotype-flex"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 10,
+          "url": "http://localhost:3000/pages/products.html#keylite-mini",
+          "item": {
+            "@id": "http://localhost:3000/pages/products.html#keylite-mini"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 11,
+          "url": "http://localhost:3000/pages/products.html#officeboard-pro",
+          "item": {
+            "@id": "http://localhost:3000/pages/products.html#officeboard-pro"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 12,
+          "url": "http://localhost:3000/pages/products.html#silentkeys-touch",
+          "item": {
+            "@id": "http://localhost:3000/pages/products.html#silentkeys-touch"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Product",
+      "@id": "http://localhost:3000/pages/products.html#quietmax-pro",
+      "name": "QuietMax Pro",
+      "description": "Comfortable noise-cancelling headphones designed for remote workers and long meetings.",
+      "category": "Headphones for remote meetings and focus",
+      "brand": { "@type": "Brand", "name": "EcoTech" },
+      "offers": { "@type": "Offer", "price": "129", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" },
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.6", "bestRating": "5", "reviewCount": "184" },
+      "additionalProperty": [
+        { "@type": "PropertyValue", "name": "Battery Life", "value": "40 hours" },
+        { "@type": "PropertyValue", "name": "Noise Cancelling", "value": "Active ANC" },
+        { "@type": "PropertyValue", "name": "Best For", "value": "Remote meetings and open-office work" }
+      ]
+    },
+    {
+      "@type": "Product",
+      "@id": "http://localhost:3000/pages/products.html#soundlite-air",
+      "name": "SoundLite Air",
+      "description": "Lightweight headphones for studying, online classes, and everyday listening.",
+      "category": "Headphones for remote meetings and focus",
+      "brand": { "@type": "Brand", "name": "EcoTech" },
+      "offers": { "@type": "Offer", "price": "79", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" },
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.2", "bestRating": "5", "reviewCount": "96" },
+      "additionalProperty": [
+        { "@type": "PropertyValue", "name": "Battery Life", "value": "28 hours" },
+        { "@type": "PropertyValue", "name": "Noise Cancelling", "value": "Passive noise isolation" },
+        { "@type": "PropertyValue", "name": "Best For", "value": "Students" }
+      ]
+    },
+    {
+      "@type": "Product",
+      "@id": "http://localhost:3000/pages/products.html#focusbeat-x",
+      "name": "FocusBeat X",
+      "description": "Premium headphones for professionals who need long battery life and strong noise cancellation.",
+      "category": "Headphones for remote meetings and focus",
+      "brand": { "@type": "Brand", "name": "EcoTech" },
+      "offers": { "@type": "Offer", "price": "149", "priceCurrency": "EUR", "availability": "https://schema.org/LimitedAvailability" },
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.7", "bestRating": "5", "reviewCount": "142" },
+      "additionalProperty": [
+        { "@type": "PropertyValue", "name": "Battery Life", "value": "45 hours" },
+        { "@type": "PropertyValue", "name": "Noise Cancelling", "value": "Active ANC" },
+        { "@type": "PropertyValue", "name": "Best For", "value": "Open offices" }
+      ]
+    },
+    {
+      "@type": "Product",
+      "@id": "http://localhost:3000/pages/products.html#travelsound-mini",
+      "name": "TravelSound Mini",
+      "description": "Compact travel headphones with foldable design and strong battery performance.",
+      "category": "Headphones for remote meetings and focus",
+      "brand": { "@type": "Brand", "name": "EcoTech" },
+      "offers": { "@type": "Offer", "price": "99", "priceCurrency": "EUR", "availability": "https://schema.org/OutOfStock" },
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.3", "bestRating": "5", "reviewCount": "73" },
+      "additionalProperty": [
+        { "@type": "PropertyValue", "name": "Battery Life", "value": "32 hours" },
+        { "@type": "PropertyValue", "name": "Noise Cancelling", "value": "Active ANC" },
+        { "@type": "PropertyValue", "name": "Best For", "value": "Travel" }
+      ]
+    },
+    {
+      "@type": "Product",
+      "@id": "http://localhost:3000/pages/products.html#viewgo-14",
+      "name": "ViewGo 14",
+      "description": "Portable monitor for studying, presentations, and light productivity.",
+      "category": "Portable Monitors",
+      "brand": { "@type": "Brand", "name": "EcoTech" },
+      "offers": { "@type": "Offer", "price": "179", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" },
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.4", "bestRating": "5", "reviewCount": "121" },
+      "additionalProperty": [
+        { "@type": "PropertyValue", "name": "Size", "value": "14 inch" },
+        { "@type": "PropertyValue", "name": "Resolution", "value": "Full HD" },
+        { "@type": "PropertyValue", "name": "Best For", "value": "Students" }
+      ]
+    },
+    {
+      "@type": "Product",
+      "@id": "http://localhost:3000/pages/products.html#dualdesk-15",
+      "name": "DualDesk 15",
+      "description": "A second-screen solution for remote workers who need more workspace.",
+      "category": "Portable Monitors",
+      "brand": { "@type": "Brand", "name": "EcoTech" },
+      "offers": { "@type": "Offer", "price": "229", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" },
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.5", "bestRating": "5", "reviewCount": "138" },
+      "additionalProperty": [
+        { "@type": "PropertyValue", "name": "Size", "value": "15.6 inch" },
+        { "@type": "PropertyValue", "name": "Resolution", "value": "Full HD" },
+        { "@type": "PropertyValue", "name": "Best For", "value": "Remote workers" }
+      ]
+    },
+    {
+      "@type": "Product",
+      "@id": "http://localhost:3000/pages/products.html#colorpro-16",
+      "name": "ColorPro 16",
+      "description": "High-resolution portable monitor for creative work and color-sensitive tasks.",
+      "category": "Portable Monitors",
+      "brand": { "@type": "Brand", "name": "EcoTech" },
+      "offers": { "@type": "Offer", "price": "319", "priceCurrency": "EUR", "availability": "https://schema.org/LimitedAvailability" },
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "bestRating": "5", "reviewCount": "87" },
+      "additionalProperty": [
+        { "@type": "PropertyValue", "name": "Size", "value": "16 inch" },
+        { "@type": "PropertyValue", "name": "Resolution", "value": "2.5K" },
+        { "@type": "PropertyValue", "name": "Best For", "value": "Designers" }
+      ]
+    },
+    {
+      "@type": "Product",
+      "@id": "http://localhost:3000/pages/products.html#litescreen-13",
+      "name": "LiteScreen 13",
+      "description": "Lightweight portable screen for travel and basic productivity.",
+      "category": "Portable Monitors",
+      "brand": { "@type": "Brand", "name": "EcoTech" },
+      "offers": { "@type": "Offer", "price": "139", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" },
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.1", "bestRating": "5", "reviewCount": "64" },
+      "additionalProperty": [
+        { "@type": "PropertyValue", "name": "Size", "value": "13 inch" },
+        { "@type": "PropertyValue", "name": "Resolution", "value": "HD" },
+        { "@type": "PropertyValue", "name": "Best For", "value": "Travel and mobile remote work" }
+      ]
+    },
+    {
+      "@type": "Product",
+      "@id": "http://localhost:3000/pages/products.html#ergotype-flex",
+      "name": "ErgoType Flex",
+      "description": "Split ergonomic keyboard designed for long coding and writing sessions.",
+      "category": "Ergonomic Keyboards",
+      "brand": { "@type": "Brand", "name": "EcoTech" },
+      "offers": { "@type": "Offer", "price": "89", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" },
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.5", "bestRating": "5", "reviewCount": "112" },
+      "additionalProperty": [
+        { "@type": "PropertyValue", "name": "Type", "value": "Split ergonomic keyboard" },
+        { "@type": "PropertyValue", "name": "Connectivity", "value": "Bluetooth" },
+        { "@type": "PropertyValue", "name": "Best For", "value": "Programmers" }
+      ]
+    },
+    {
+      "@type": "Product",
+      "@id": "http://localhost:3000/pages/products.html#keylite-mini",
+      "name": "KeyLite Mini",
+      "description": "Compact and affordable keyboard for small desks and student setups.",
+      "category": "Ergonomic Keyboards",
+      "brand": { "@type": "Brand", "name": "EcoTech" },
+      "offers": { "@type": "Offer", "price": "49", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" },
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.0", "bestRating": "5", "reviewCount": "58" },
+      "additionalProperty": [
+        { "@type": "PropertyValue", "name": "Type", "value": "Compact keyboard" },
+        { "@type": "PropertyValue", "name": "Connectivity", "value": "USB-C" },
+        { "@type": "PropertyValue", "name": "Best For", "value": "Students" }
+      ]
+    },
+    {
+      "@type": "Product",
+      "@id": "http://localhost:3000/pages/products.html#officeboard-pro",
+      "name": "OfficeBoard Pro",
+      "description": "Full-size keyboard for office productivity and daily business use.",
+      "category": "Ergonomic Keyboards",
+      "brand": { "@type": "Brand", "name": "EcoTech" },
+      "offers": { "@type": "Offer", "price": "69", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" },
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.3", "bestRating": "5", "reviewCount": "91" },
+      "additionalProperty": [
+        { "@type": "PropertyValue", "name": "Type", "value": "Full-size keyboard" },
+        { "@type": "PropertyValue", "name": "Connectivity", "value": "Wireless" },
+        { "@type": "PropertyValue", "name": "Best For", "value": "Office teams" }
+      ]
+    },
+    {
+      "@type": "Product",
+      "@id": "http://localhost:3000/pages/products.html#silentkeys-touch",
+      "name": "SilentKeys Touch",
+      "description": "Quiet keyboard for shared offices, libraries, and late-night work.",
+      "category": "Ergonomic Keyboards",
+      "brand": { "@type": "Brand", "name": "EcoTech" },
+      "offers": { "@type": "Offer", "price": "59", "priceCurrency": "EUR", "availability": "https://schema.org/OutOfStock" },
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.2", "bestRating": "5", "reviewCount": "76" },
+      "additionalProperty": [
+        { "@type": "PropertyValue", "name": "Type", "value": "Low-noise keyboard" },
+        { "@type": "PropertyValue", "name": "Connectivity", "value": "Bluetooth" },
+        { "@type": "PropertyValue", "name": "Best For", "value": "Shared workspaces" }
+      ]
+    }
+  ]
+}
+    </script>
+    <script>
+        const productEvidence = {
+            "quietmax-pro": {
+                evidenceId: "eco-anc-2026",
+                claimId: "quietmax-pro-noise-reduction",
+                claimText: "Reduces background noise by up to 85%.",
+                evidenceLabel: "ECO-ANC-2026 internal test report",
+                evidenceHref: "evidence.html#eco-anc-2026",
+                stockCheckedDate: "2026-05-07",
+                priceValidUntil: "2026-06-30"
+            }
+        };
+        const freshnessDefaults = {
+            lastUpdated: "2026-05-01",
+            stockCheckedDate: "2026-05-07",
+            priceValidUntil: "2026-06-30"
+        };
+
+        function getProductType(product) {
+            if (product.category === 'Noise-Cancelling Headphones') return 'Active or passive noise-cancelling headphones';
+            if (product.category === 'Portable Monitors') return 'Portable monitor';
+            if (product.category === 'Ergonomic Keyboards') return 'Ergonomic keyboard';
+            return null;
+        }
+
+        function toProductSlug(name) {
+            return String(name || '')
+                .toLowerCase()
+                .replace(/[^a-z0-9]+/g, '-')
+                .replace(/^-+|-+$/g, '');
+        }
+
+        function getLimitations(product) {
+            const limitations = [];
+            if (product.noiseCancelling && product.noiseCancelling.toLowerCase().includes('passive')) {
+                limitations.push('Passive isolation only; no active noise cancelling');
+            }
+            if (product.batteryLife) {
+                const match = product.batteryLife.match(/\d+/);
+                if (match && Number(match[0]) < 35) {
+                    limitations.push('Battery life below 35 hours');
+                }
+            }
+            return limitations;
+        }
+
+        function getEvidenceForProduct(product) {
+            const slug = toProductSlug(product.name);
+            return productEvidence[slug] || null;
+        }
+
+        function getPositioningForProduct(product) {
+            return {
+                useCases: product.bestFor ? [product.bestFor] : []
+            };
+        }
+
+        function getDisplayCategory(categoryKey) {
+            const displayMap = {
+                "Noise-Cancelling Headphones": "Headphones for remote meetings and focus",
+                "Portable Monitors": "Portable monitors for mobile productivity",
+                "Ergonomic Keyboards": "Ergonomic keyboards for comfortable typing and desk work"
+            };
+            return displayMap[categoryKey] || categoryKey;
+        }
+
+        function getCanonicalCategoryKey(categoryValue) {
+            const map = {
+                "Noise-Cancelling Headphones": "headphones",
+                "Portable Monitors": "monitors",
+                "Ergonomic Keyboards": "keyboards",
+                headphones: "headphones",
+                monitors: "monitors",
+                keyboards: "keyboards"
+            };
+            return map[categoryValue] || null;
+        }
+
+        function getProductTypeNoun(product) {
+            const key = getCanonicalCategoryKey(product.category);
+            if (key === 'headphones') return 'headphone';
+            if (key === 'monitors') return 'monitor';
+            if (key === 'keyboards') return 'keyboard';
+            return 'product';
+        }
+
+        function getStockMetadata(stockStatus) {
+            const normalized = String(stockStatus || '').trim().toLowerCase();
+            if (normalized === 'in stock') {
+                return {
+                    dataStockStatus: 'in_stock',
+                    availability: 'available',
+                    purchasable: true
+                };
+            }
+            if (normalized === 'low stock') {
+                return {
+                    dataStockStatus: 'low_stock',
+                    availability: 'available',
+                    purchasable: true
+                };
+            }
+            if (normalized === 'out of stock') {
+                return {
+                    dataStockStatus: 'out_of_stock',
+                    availability: 'unavailable',
+                    purchasable: false
+                };
+            }
+            if (normalized === 'unavailable') {
+                return {
+                    dataStockStatus: 'unavailable',
+                    availability: 'unavailable',
+                    purchasable: false
+                };
+            }
+            return {
+                dataStockStatus: normalized.replace(/\s+/g, '_') || 'unavailable',
+                availability: 'unavailable',
+                purchasable: false
+            };
+        }
+
+        function renderProducts(filteredProducts) {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = '';
+            const fragment = document.createDocumentFragment();
+            
+            filteredProducts.forEach(product => {
+                const productType = getProductType(product);
+                const limitations = getLimitations(product);
+                const productSlug = toProductSlug(product.name);
+                const stockId = `stock-${productSlug}`;
+                const stockMeta = getStockMetadata(product.stock);
+                const isUnavailable = !stockMeta.purchasable;
+                const productTypeNoun = getProductTypeNoun(product);
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.setAttribute('data-product-id', productSlug);
+                card.setAttribute('data-product-name', product.name);
+                card.setAttribute('data-category', getCanonicalCategoryKey(product.category) || product.category);
+                card.setAttribute('data-price', String(product.price));
+                card.setAttribute('data-stock-status', stockMeta.dataStockStatus);
+                card.setAttribute('data-availability', stockMeta.availability);
+                card.setAttribute('data-purchasable', String(stockMeta.purchasable));
+                if (typeof product.rating !== 'undefined') {
+                    card.setAttribute('data-rating', String(product.rating));
+                }
+                if (product.batteryLife) {
+                    card.setAttribute('data-battery-life', product.batteryLife);
+                }
+                card.innerHTML = `
+                    <div class="product-img">📦</div>
+                    <div class="product-info">
+                        <h3>${product.name}</h3>
+                        ${productType ? `<p><strong>Product type:</strong> ${productType}</p>` : ''}
+                        <p><strong>Category:</strong> ${getDisplayCategory(product.category)}</p>
+                        <p><strong>Price:</strong> €${product.price}</p>
+                        <p><strong>Currency:</strong> EUR</p>
+                        <p id="${stockId}"><strong>Stock status:</strong> ${product.stock}</p>
+                        <p><strong>Rating:</strong> ${product.rating}/5</p>
+                        ${product.batteryLife ? `<p><strong>Battery life:</strong> ${product.batteryLife}</p>` : ''}
+                        ${product.noiseCancelling ? `<p><strong>Noise cancelling type:</strong> ${product.noiseCancelling}</p>` : ''}
+                        <p><strong>Best use case:</strong> ${product.bestFor}</p>
+                        ${limitations.length ? `<p><strong>Limitations:</strong> ${limitations.join('; ')}</p>` : ''}
+                        <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+                            <button class="btn" type="button" style="padding: 0.5rem; font-size: 0.8rem; flex: 1;" onclick="viewDetails(${product.id})" data-action="view-details" data-product-id="${productSlug}" data-product-name="${product.name}" aria-label="View details for ${product.name}">View details for ${product.name}</button>
+                            <button class="btn" type="button" style="padding: 0.5rem; font-size: 0.8rem; background-color: var(--accent-color); flex: 1;" onclick="addToCart(${product.id})" data-action="add-to-cart" data-product-id="${productSlug}" data-product-name="${product.name}" data-category="${getCanonicalCategoryKey(product.category) || product.category}" data-stock-status="${stockMeta.dataStockStatus}" data-availability="${stockMeta.availability}" data-purchasable="${String(stockMeta.purchasable)}" aria-describedby="${stockId}" ${isUnavailable ? 'disabled aria-disabled="true"' : ''} aria-label="${isUnavailable ? `Add ${product.name} ${productTypeNoun} to cart unavailable because product is ${String(product.stock || 'unavailable').toLowerCase()}` : `Add ${product.name} ${productTypeNoun} to cart`}">Add ${product.name} to cart</button>
+                        </div>
+                    </div>
+                `;
+                fragment.appendChild(card);
+            });
+            grid.appendChild(fragment);
+        }
+
+        function filterAndSort(options = {}) {
+            const { globalSearch = false } = options;
+            const searchTerm = document.getElementById('search').value.toLowerCase();
+            const category = document.getElementById('category').value;
+            const sortVal = document.getElementById('sort').value;
+            const effectiveCategory = globalSearch ? 'all' : category;
+
+            let filtered = products.filter(p => {
+                const matchesSearch = p.name.toLowerCase().includes(searchTerm) || 
+                                    p.description.toLowerCase().includes(searchTerm) ||
+                                    p.category.toLowerCase().includes(searchTerm) ||
+                                    p.bestFor.toLowerCase().includes(searchTerm);
+                const productCategoryKey = getCanonicalCategoryKey(p.category);
+                const matchesCategory = effectiveCategory === 'all' || productCategoryKey === effectiveCategory;
+                return matchesSearch && matchesCategory;
+            });
+
+            if (sortVal === 'price-low') filtered.sort((a, b) => a.price - b.price);
+            else if (sortVal === 'price-high') filtered.sort((a, b) => b.price - a.price);
+            else if (sortVal === 'rating') filtered.sort((a, b) => b.rating - a.rating);
+            else if (sortVal === 'name') filtered.sort((a, b) => a.name.localeCompare(b.name));
+
+            renderProducts(filtered);
+            return filtered;
+        }
+
+        function runGlobalSearch() {
+            document.getElementById('category').value = 'all';
+            filterAndSort({ globalSearch: true });
+        }
+
+        function normalizeCategoryToken(value) {
+            return (value || '')
+                .toLowerCase()
+                .replace(/\+/g, ' ')
+                .replace(/_/g, ' ')
+                .replace(/-/g, ' ')
+                .replace(/\s+/g, ' ')
+                .trim();
+        }
+
+        function resolveCategoryFromUrl(rawCategory) {
+            if (!rawCategory) return { internalCategory: null, canonicalKey: null };
+            const token = normalizeCategoryToken(rawCategory);
+            const aliasToCanonical = {
+                headphones: 'headphones',
+                headphone: 'headphones',
+                'noise cancelling headphones': 'headphones',
+                'noise-cancelling headphones': 'headphones',
+                'noise-cancelling-headphones': 'headphones',
+                'headphones for remote meetings and focus': 'headphones',
+                monitors: 'monitors',
+                monitor: 'monitors',
+                portable_monitors: 'monitors',
+                'portable monitors': 'monitors',
+                'portable-monitors': 'monitors',
+                'portable monitors for mobile productivity': 'monitors',
+                keyboards: 'keyboards',
+                keyboard: 'keyboards',
+                'ergonomic keyboards': 'keyboards',
+                'ergonomic-keyboards': 'keyboards',
+                ergonomic_keyboards: 'keyboards',
+                'ergonomic keyboards for comfort': 'keyboards',
+                'ergonomic keyboards for comfort and productivity': 'keyboards',
+                'ergonomic keyboards for comfortable typing': 'keyboards',
+                'ergonomic-keyboards-for-comfortable-typing-and-desk-work': 'keyboards',
+                'ergonomic keyboards for comfortable typing and desk work': 'keyboards'
+            };
+            const canonicalKey = aliasToCanonical[token] || null;
+            return {
+                internalCategory: canonicalKey,
+                canonicalKey
+            };
+        }
+
+        function syncCategoryInUrl(categoryKey) {
+            const url = new URL(window.location.href);
+            if (categoryKey && categoryKey !== 'all') {
+                url.searchParams.set('category', categoryKey);
+            } else {
+                url.searchParams.delete('category');
+            }
+            const query = url.searchParams.toString();
+            const nextUrl = `${url.pathname}${query ? `?${query}` : ''}`;
+            window.history.replaceState({}, '', nextUrl);
+        }
+
+        function viewDetails(id) {
+            const product = products.find(p => p.id === id);
+            const modal = document.getElementById('product-modal');
+            const body = document.getElementById('modal-body');
+            const productType = getProductType(product);
+            const positioning = getPositioningForProduct(product);
+            const limitations = getLimitations(product);
+            const productSlug = toProductSlug(product.name);
+            const stockId = `stock-modal-${productSlug}`;
+            const stockMeta = getStockMetadata(product.stock);
+            const isUnavailable = !stockMeta.purchasable;
+            const productTypeNoun = getProductTypeNoun(product);
+            
+            body.innerHTML = `
+                <article style="display: flex; gap: 2rem; flex-wrap: wrap;" aria-label="Product details for ${product.name}" data-product-id="${productSlug}">
+                    <div style="flex: 1; min-width: 250px; background: #eee; display: flex; align-items: center; justify-content: center; font-size: 5rem; border-radius: 8px;">📦</div>
+                    <div style="flex: 1.5; min-width: 300px;">
+                        <section aria-label="Product summary">
+                            <h2>${product.name}</h2>
+                            ${productType ? `<p><strong>Product type:</strong> ${productType}</p>` : ''}
+                            <p style="margin: 1rem 0;">${product.description}</p>
+                        </section>
+                        <section aria-label="Product positioning" style="margin-top: 1rem;">
+                            <h3>Product positioning</h3>
+                            <p><strong>Category:</strong> ${getDisplayCategory(product.category)}</p>
+                            <p><strong>Best for:</strong> ${product.bestFor}</p>
+                            ${positioning.useCases.length ? `<p><strong>Use cases:</strong> ${positioning.useCases.join(', ')}</p>` : ''}
+                        </section>
+                        <section aria-label="Product specifications for ${product.name}">
+                            <table style="width: 100%; border-collapse: collapse; margin-top: 1rem;">
+                                <tr><th style="text-align: left; border: 1px solid var(--border-color); padding: 0.5rem;">Price</th><td style="border: 1px solid var(--border-color); padding: 0.5rem;">€${product.price}</td></tr>
+                                <tr><th style="text-align: left; border: 1px solid var(--border-color); padding: 0.5rem;">Currency</th><td style="border: 1px solid var(--border-color); padding: 0.5rem;">EUR</td></tr>
+                                <tr><th style="text-align: left; border: 1px solid var(--border-color); padding: 0.5rem;">Category</th><td style="border: 1px solid var(--border-color); padding: 0.5rem;">${getDisplayCategory(product.category)}</td></tr>
+                                <tr><th style="text-align: left; border: 1px solid var(--border-color); padding: 0.5rem;">Stock status</th><td id="${stockId}" style="border: 1px solid var(--border-color); padding: 0.5rem;">${product.stock}</td></tr>
+                                <tr><th style="text-align: left; border: 1px solid var(--border-color); padding: 0.5rem;">Rating</th><td style="border: 1px solid var(--border-color); padding: 0.5rem;">${product.rating}/5</td></tr>
+                                ${product.reviews ? `<tr><th style="text-align: left; border: 1px solid var(--border-color); padding: 0.5rem;">Review count</th><td style="border: 1px solid var(--border-color); padding: 0.5rem;">${product.reviews}</td></tr>` : ''}
+                                ${product.batteryLife ? `<tr><th style="text-align: left; border: 1px solid var(--border-color); padding: 0.5rem;">Battery life</th><td style="border: 1px solid var(--border-color); padding: 0.5rem;">${product.batteryLife}</td></tr>` : ''}
+                                ${product.noiseCancelling ? `<tr><th style="text-align: left; border: 1px solid var(--border-color); padding: 0.5rem;">Noise cancelling type</th><td style="border: 1px solid var(--border-color); padding: 0.5rem;">${product.noiseCancelling}</td></tr>` : ''}
+                                ${product.size ? `<tr><th style="text-align: left; border: 1px solid var(--border-color); padding: 0.5rem;">Size</th><td style="border: 1px solid var(--border-color); padding: 0.5rem;">${product.size}</td></tr>` : ''}
+                                ${product.resolution ? `<tr><th style="text-align: left; border: 1px solid var(--border-color); padding: 0.5rem;">Resolution</th><td style="border: 1px solid var(--border-color); padding: 0.5rem;">${product.resolution}</td></tr>` : ''}
+                                ${product.connectivity ? `<tr><th style="text-align: left; border: 1px solid var(--border-color); padding: 0.5rem;">Connectivity</th><td style="border: 1px solid var(--border-color); padding: 0.5rem;">${product.connectivity}</td></tr>` : ''}
+                                <tr><th style="text-align: left; border: 1px solid var(--border-color); padding: 0.5rem;">Best use case</th><td style="border: 1px solid var(--border-color); padding: 0.5rem;">${product.bestFor}</td></tr>
+                                ${limitations.length ? `<tr><th style="text-align: left; border: 1px solid var(--border-color); padding: 0.5rem;">Limitations</th><td style="border: 1px solid var(--border-color); padding: 0.5rem;">${limitations.join('; ')}</td></tr>` : ''}
+                            </table>
+                        </section>
+                        <section aria-label="Freshness and validity" style="margin-top: 1rem;">
+                            <h3>Freshness and validity</h3>
+                            <p><strong>Last updated:</strong> ${freshnessDefaults.lastUpdated}</p>
+                            <p><strong>Stock checked:</strong> ${freshnessDefaults.stockCheckedDate}</p>
+                            <p><strong>Price valid until:</strong> ${freshnessDefaults.priceValidUntil}</p>
+                        </section>
+                        <button class="btn" type="button" style="margin-top: 2rem; width: 100%;" onclick="addToCart(${product.id})" data-action="add-to-cart" data-product-id="${productSlug}" data-product-name="${product.name}" data-category="${getCanonicalCategoryKey(product.category) || product.category}" data-stock-status="${stockMeta.dataStockStatus}" data-availability="${stockMeta.availability}" data-purchasable="${String(stockMeta.purchasable)}" aria-describedby="${stockId}" ${isUnavailable ? 'disabled aria-disabled="true"' : ''} aria-label="${isUnavailable ? `Add ${product.name} ${productTypeNoun} to cart unavailable because product is ${String(product.stock || 'unavailable').toLowerCase()}` : `Add ${product.name} ${productTypeNoun} to cart`}">Add ${product.name} to cart</button>
+                    </div>
+                </article>
+            `;
+            modal.style.display = 'block';
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            filterAndSort();
+            document.getElementById('search').addEventListener('input', filterAndSort);
+            document.getElementById('category').addEventListener('change', () => {
+                const categoryValue = document.getElementById('category').value;
+                syncCategoryInUrl(categoryValue);
+                filterAndSort();
+            });
+            document.getElementById('sort').addEventListener('change', filterAndSort);
+            document.getElementById('search-btn').addEventListener('click', runGlobalSearch);
+            document.getElementById('search').addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    runGlobalSearch();
+                }
+            });
+            
+            const modal = document.getElementById('product-modal');
+            document.querySelector('.close').onclick = () => modal.style.display = 'none';
+            window.onclick = (event) => { if (event.target == modal) modal.style.display = 'none'; }
+            
+            // Handle category filter from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const catParam = urlParams.get('category');
+            const searchParam = urlParams.get('q');
+            if (catParam) {
+                const categoryNotice = document.getElementById('category-notice');
+                const resolvedCategory = resolveCategoryFromUrl(catParam);
+                if (resolvedCategory.internalCategory) {
+                    categoryNotice.textContent = '';
+                    document.getElementById('category').value = resolvedCategory.internalCategory;
+                    filterAndSort();
+                    if (resolvedCategory.canonicalKey) {
+                        syncCategoryInUrl(resolvedCategory.canonicalKey);
+                    }
+                } else {
+                    document.getElementById('category').value = 'all';
+                    filterAndSort();
+                    categoryNotice.textContent = 'Unknown category. Showing all products.';
+                    syncCategoryInUrl('all');
+                }
+            }
+            if (searchParam) {
+                document.getElementById('search').value = searchParam;
+                runGlobalSearch();
+            }
+        });
+    </script>
+</body>
+</html>
+

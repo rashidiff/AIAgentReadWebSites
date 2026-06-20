@@ -1,0 +1,28 @@
+{
+  "@id": "http://localhost:3000/pages/products.html#quietmax-pro",
+  "id": 1,
+  "slug": "quietmax-pro",
+  "name": "QuietMax Pro",
+  "category": "Headphones for remote meetings and focus",
+  "price": 129,
+  "priceCurrency": "EUR",
+  "availability": "https://schema.org/InStock",
+  "stock": "In stock",
+  "rating": 4.6,
+  "reviewCount": 184,
+  "description": "Comfortable noise-cancelling headphones designed for remote workers and long meetings.",
+  "batteryLife": "40 hours",
+  "noiseCancelling": "Active ANC",
+  "bestFor": "Remote meetings and open-office work",
+  "lastUpdated": "2026-05-01",
+  "stockCheckedDate": "2026-05-07",
+  "priceValidUntil": "2026-06-30",
+  "useCases": [
+    "Remote meetings and open-office work"
+  ],
+  "displayCategory": "Headphones for remote meetings and focus",
+  "internalCategoryKey": "Noise-Cancelling Headphones",
+  "dataAvailability": "available",
+  "dataPurchasable": true,
+  "dataStockStatus": "in_stock"
+}

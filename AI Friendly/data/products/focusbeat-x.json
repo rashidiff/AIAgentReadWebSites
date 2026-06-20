@@ -1,0 +1,28 @@
+{
+  "@id": "http://localhost:3000/pages/products.html#focusbeat-x",
+  "id": 3,
+  "slug": "focusbeat-x",
+  "name": "FocusBeat X",
+  "category": "Headphones for remote meetings and focus",
+  "price": 149,
+  "priceCurrency": "EUR",
+  "availability": "https://schema.org/LimitedAvailability",
+  "stock": "Low stock",
+  "rating": 4.7,
+  "reviewCount": 142,
+  "description": "Premium headphones for professionals who need long battery life and strong noise cancellation.",
+  "batteryLife": "45 hours",
+  "noiseCancelling": "Active ANC",
+  "bestFor": "Open offices",
+  "lastUpdated": "2026-05-01",
+  "stockCheckedDate": "2026-05-07",
+  "priceValidUntil": "2026-06-30",
+  "useCases": [
+    "Open offices"
+  ],
+  "displayCategory": "Headphones for remote meetings and focus",
+  "internalCategoryKey": "Noise-Cancelling Headphones",
+  "dataAvailability": "available",
+  "dataPurchasable": true,
+  "dataStockStatus": "low_stock"
+}

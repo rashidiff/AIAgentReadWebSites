@@ -1,0 +1,28 @@
+{
+  "@id": "http://localhost:3000/pages/products.html#ergotype-flex",
+  "id": 9,
+  "slug": "ergotype-flex",
+  "name": "ErgoType Flex",
+  "category": "Ergonomic Keyboards",
+  "price": 89,
+  "priceCurrency": "EUR",
+  "availability": "https://schema.org/InStock",
+  "stock": "In stock",
+  "rating": 4.5,
+  "reviewCount": 112,
+  "description": "Split ergonomic keyboard designed for long coding and writing sessions.",
+  "bestFor": "Programmers",
+  "connectivity": "Bluetooth",
+  "type": "Split ergonomic keyboard",
+  "lastUpdated": "2026-05-01",
+  "stockCheckedDate": "2026-05-07",
+  "priceValidUntil": "2026-06-30",
+  "useCases": [
+    "Programmers"
+  ],
+  "displayCategory": "Ergonomic keyboards for comfortable typing and desk work",
+  "internalCategoryKey": "Ergonomic Keyboards",
+  "dataAvailability": "available",
+  "dataPurchasable": true,
+  "dataStockStatus": "in_stock"
+}

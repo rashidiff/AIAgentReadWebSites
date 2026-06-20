@@ -1,0 +1,17 @@
+{
+  "siteName": "EcoTech Store",
+  "industry": "Eco-friendly productivity technology accessories",
+  "storeType": "Online store for work, study, and desk productivity accessories",
+  "mainProductCategories": [
+    "Headphones",
+    "Portable monitors",
+    "Ergonomic keyboards"
+  ],
+  "mainUseCases": [
+    "Remote meetings",
+    "Focused work",
+    "Portable productivity",
+    "Ergonomic typing"
+  ],
+  "positioningStatement": "EcoTech Store sells eco-friendly productivity tech accessories for work, study, and modern desk setups."
+}

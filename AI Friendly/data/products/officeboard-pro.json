@@ -1,0 +1,28 @@
+{
+  "@id": "http://localhost:3000/pages/products.html#officeboard-pro",
+  "id": 11,
+  "slug": "officeboard-pro",
+  "name": "OfficeBoard Pro",
+  "category": "Ergonomic Keyboards",
+  "price": 69,
+  "priceCurrency": "EUR",
+  "availability": "https://schema.org/InStock",
+  "stock": "In stock",
+  "rating": 4.3,
+  "reviewCount": 91,
+  "description": "Full-size keyboard for office productivity and daily business use.",
+  "bestFor": "Office teams",
+  "connectivity": "Wireless",
+  "type": "Full-size keyboard",
+  "lastUpdated": "2026-05-01",
+  "stockCheckedDate": "2026-05-07",
+  "priceValidUntil": "2026-06-30",
+  "useCases": [
+    "Office teams"
+  ],
+  "displayCategory": "Ergonomic keyboards for comfortable typing and desk work",
+  "internalCategoryKey": "Ergonomic Keyboards",
+  "dataAvailability": "available",
+  "dataPurchasable": true,
+  "dataStockStatus": "in_stock"
+}

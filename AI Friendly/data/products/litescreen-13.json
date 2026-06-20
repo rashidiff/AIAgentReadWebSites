@@ -1,0 +1,28 @@
+{
+  "@id": "http://localhost:3000/pages/products.html#litescreen-13",
+  "id": 8,
+  "slug": "litescreen-13",
+  "name": "LiteScreen 13",
+  "category": "Portable Monitors",
+  "price": 139,
+  "priceCurrency": "EUR",
+  "availability": "https://schema.org/InStock",
+  "stock": "In stock",
+  "rating": 4.1,
+  "reviewCount": 64,
+  "description": "Lightweight portable screen for travel and basic productivity.",
+  "bestFor": "Travel and mobile remote work",
+  "size": "13 inch",
+  "resolution": "HD",
+  "lastUpdated": "2026-05-01",
+  "stockCheckedDate": "2026-05-07",
+  "priceValidUntil": "2026-06-30",
+  "useCases": [
+    "Travel and mobile remote work"
+  ],
+  "displayCategory": "Portable monitors for mobile productivity",
+  "internalCategoryKey": "Portable Monitors",
+  "dataAvailability": "available",
+  "dataPurchasable": true,
+  "dataStockStatus": "in_stock"
+}

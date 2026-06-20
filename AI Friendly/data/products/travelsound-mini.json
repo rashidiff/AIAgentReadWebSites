@@ -1,0 +1,28 @@
+{
+  "@id": "http://localhost:3000/pages/products.html#travelsound-mini",
+  "id": 4,
+  "slug": "travelsound-mini",
+  "name": "TravelSound Mini",
+  "category": "Headphones for remote meetings and focus",
+  "price": 99,
+  "priceCurrency": "EUR",
+  "availability": "https://schema.org/OutOfStock",
+  "stock": "Out of stock",
+  "rating": 4.3,
+  "reviewCount": 73,
+  "description": "Compact travel headphones with foldable design and strong battery performance.",
+  "batteryLife": "32 hours",
+  "noiseCancelling": "Active ANC",
+  "bestFor": "Travel",
+  "lastUpdated": "2026-05-01",
+  "stockCheckedDate": "2026-05-07",
+  "priceValidUntil": "2026-06-30",
+  "useCases": [
+    "Travel"
+  ],
+  "displayCategory": "Headphones for remote meetings and focus",
+  "internalCategoryKey": "Noise-Cancelling Headphones",
+  "dataAvailability": "unavailable",
+  "dataPurchasable": false,
+  "dataStockStatus": "out_of_stock"
+}

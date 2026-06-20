@@ -1,0 +1,28 @@
+{
+  "@id": "http://localhost:3000/pages/products.html#soundlite-air",
+  "id": 2,
+  "slug": "soundlite-air",
+  "name": "SoundLite Air",
+  "category": "Headphones for remote meetings and focus",
+  "price": 79,
+  "priceCurrency": "EUR",
+  "availability": "https://schema.org/InStock",
+  "stock": "In stock",
+  "rating": 4.2,
+  "reviewCount": 96,
+  "description": "Lightweight headphones for studying, online classes, and everyday listening.",
+  "batteryLife": "28 hours",
+  "noiseCancelling": "Passive noise isolation",
+  "bestFor": "Students",
+  "lastUpdated": "2026-05-01",
+  "stockCheckedDate": "2026-05-07",
+  "priceValidUntil": "2026-06-30",
+  "useCases": [
+    "Students"
+  ],
+  "displayCategory": "Headphones for remote meetings and focus",
+  "internalCategoryKey": "Noise-Cancelling Headphones",
+  "dataAvailability": "available",
+  "dataPurchasable": true,
+  "dataStockStatus": "in_stock"
+}

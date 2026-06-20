@@ -1,0 +1,18 @@
+[
+  {
+    "evidenceId": "eco-anc-2026",
+    "productId": "quietmax-pro",
+    "claimId": "quietmax-pro-noise-reduction",
+    "claimText": "Reduces background noise by up to 85%",
+    "evidenceType": "internal_test_report",
+    "method": "Controlled office noise simulation",
+    "result": "Up to 85% reduction under stated conditions",
+    "limitations": [
+      "Results may vary by environment",
+      "Results may vary by fit",
+      "Results may vary by noise type"
+    ],
+    "verdict": "supported_under_stated_conditions",
+    "evidencePage": "http://localhost:3000/pages/evidence.html#eco-anc-2026"
+  }
+]

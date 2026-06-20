@@ -1,0 +1,28 @@
+{
+  "@id": "http://localhost:3000/pages/products.html#silentkeys-touch",
+  "id": 12,
+  "slug": "silentkeys-touch",
+  "name": "SilentKeys Touch",
+  "category": "Ergonomic Keyboards",
+  "price": 59,
+  "priceCurrency": "EUR",
+  "availability": "https://schema.org/OutOfStock",
+  "stock": "Out of stock",
+  "rating": 4.2,
+  "reviewCount": 76,
+  "description": "Quiet keyboard for shared offices, libraries, and late-night work.",
+  "bestFor": "Shared workspaces",
+  "connectivity": "Bluetooth",
+  "type": "Low-noise keyboard",
+  "lastUpdated": "2026-05-01",
+  "stockCheckedDate": "2026-05-07",
+  "priceValidUntil": "2026-06-30",
+  "useCases": [
+    "Shared workspaces"
+  ],
+  "displayCategory": "Ergonomic keyboards for comfortable typing and desk work",
+  "internalCategoryKey": "Ergonomic Keyboards",
+  "dataAvailability": "unavailable",
+  "dataPurchasable": false,
+  "dataStockStatus": "out_of_stock"
+}

@@ -1,0 +1,28 @@
+{
+  "@id": "http://localhost:3000/pages/products.html#keylite-mini",
+  "id": 10,
+  "slug": "keylite-mini",
+  "name": "KeyLite Mini",
+  "category": "Ergonomic Keyboards",
+  "price": 49,
+  "priceCurrency": "EUR",
+  "availability": "https://schema.org/InStock",
+  "stock": "In stock",
+  "rating": 4,
+  "reviewCount": 58,
+  "description": "Compact and affordable keyboard for small desks and student setups.",
+  "bestFor": "Students",
+  "connectivity": "USB-C",
+  "type": "Compact keyboard",
+  "lastUpdated": "2026-05-01",
+  "stockCheckedDate": "2026-05-07",
+  "priceValidUntil": "2026-06-30",
+  "useCases": [
+    "Students"
+  ],
+  "displayCategory": "Ergonomic keyboards for comfortable typing and desk work",
+  "internalCategoryKey": "Ergonomic Keyboards",
+  "dataAvailability": "available",
+  "dataPurchasable": true,
+  "dataStockStatus": "in_stock"
+}
