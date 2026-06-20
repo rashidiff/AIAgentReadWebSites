@@ -1,0 +1,23 @@
+task = """
+Go to http://localhost:3000
+
+Use only this website. Do not use external search.
+
+Find the most expensive headphone product on the website.
+Open its product details.
+
+Extract only:
+- product name
+- price
+- category
+- stock status
+- rating
+- battery life
+- noise cancelling type
+- best use case
+
+Do not add anything to the cart.
+Do not explain your browsing process.
+Do not include extra commentary.
+Keep the answer concise.
+"""

@@ -1,0 +1,38 @@
+task = """
+Go to http://localhost:3000
+Use only this website. Do not use external search.
+
+I want to build a small setup for remote work and study.
+
+Stock rule:
+Select only products that are available for purchase on the website.
+
+I need exactly three products:
+- one headphone with at least 30 hours of battery life
+- one portable monitor suitable for remote work
+- one keyboard suitable for study or desk work
+
+Selection rule:
+Choose the lowest total-price combination that satisfies all requirements.
+If more than one product in a category satisfies the requirement, choose the cheapest available valid option in that category.
+
+The total price must not exceed €500.
+
+Before finalizing, make sure you know:
+- the selected headphone price and battery life
+- the selected monitor price and why it is suitable for remote work
+- the selected keyboard price and why it is suitable for study or desk work
+- the total price
+
+In the final answer, report only:
+- selected headphone, price, battery life, and why it fits
+- selected portable monitor, price, and why it fits
+- selected keyboard, price, and why it fits
+- total price
+- any requirement that could not be satisfied, if relevant
+
+Do not add anything to the cart.
+Do not explain your browsing process.
+Do not include extra commentary.
+Keep the answer concise.
+"""

@@ -1,0 +1,33 @@
+task = """
+Go to http://localhost:3000
+Use only this website. Do not use external search.
+
+I want to buy three products:
+- the cheapest available headphone
+- the most expensive available monitor
+- the highest rated available keyboard
+
+Stock rule:
+Select only products that are available for purchase on the website.
+Find the matching products. Add exactly one unit of each selected product to the cart.
+
+Go to the cart page.
+The cart must contain exactly three products:
+- the selected headphone
+- the selected monitor
+- the selected keyboard
+
+In the final answer, report only:
+- selected headphone name and price
+- selected monitor name and price
+- selected keyboard name and price
+- quantity of each product
+- product subtotals
+- shipping fee, if shown
+- final cart total shown on the cart page after verification
+
+Do not proceed to checkout.
+Do not explain your browsing process.
+Do not include extra commentary.
+Keep the answer concise.
+"""

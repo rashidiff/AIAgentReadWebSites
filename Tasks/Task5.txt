@@ -1,0 +1,24 @@
+task = """
+Go to http://localhost:3000
+
+Use only this website. Do not use external search.
+
+Today is Monday.
+I want to know whether I can receive an order from this store by Friday of the same week.
+Also check whether I could return a product after 2 months if I am not satisfied.
+
+Find the relevant store policy information and report only:
+- standard shipping time
+- express shipping time, if available
+- whether Friday delivery is possible
+- return window
+- whether returning a product after 2 months is allowed
+- final verdict: possible, partially possible, or not possible
+- brief reason for the verdict
+
+Do not add anything to the cart.
+Do not proceed to checkout.
+Do not explain your browsing process.
+Do not include extra commentary.
+Keep the answer concise.
+"""

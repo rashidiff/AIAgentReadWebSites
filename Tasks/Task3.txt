@@ -1,0 +1,33 @@
+task = """
+Go to http://localhost:3000
+
+Use only this website. Do not use external search.
+
+I am choosing between two headphones:
+- FocusBeat X
+- SoundLite Air
+
+I do not have a strict budget limit, but I do not want to pay more unless the more expensive product gives a clearly better value.
+
+Compare the two products using the information available on the website.
+Consider:
+- price
+- stock status
+- rating
+- battery life
+- noise cancelling type
+- best use case
+- limitations or evidence, if available
+
+In the final answer, report only:
+- which product is cheaper
+- which product is more expensive
+- whether the more expensive product is worth paying extra for
+- key reasons for the decision
+- any important limitation or uncertainty
+
+Do not add anything to the cart.
+Do not explain your browsing process.
+Do not include extra commentary.
+Keep the answer concise.
+"""
