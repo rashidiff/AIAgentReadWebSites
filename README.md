@@ -4,7 +4,7 @@
 
 **Accepted at ICEME 2026**
 
-**Authors:** Said Elnaffar · Farzad
+**Authors:** Said Elnaffar · Farzad Rashidi
 
 ---
 
